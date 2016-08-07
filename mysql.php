@@ -28,8 +28,6 @@ class database {
 
     $query = "INSERT INTO $tabela ($campos) values ('$values')";
 
-    var_dump($query);
-
 		$result = mysql_query($query) or die(mysql_error());
 		$ultimo_id = mysql_insert_id($conexao);
 		return $ultimo_id;
