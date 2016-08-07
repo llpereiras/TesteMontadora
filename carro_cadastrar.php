@@ -1,30 +1,24 @@
-<?php 
+<?php
 
   include ("mysql.php");
-	
-	$con = new database();
-	
-	$con -> conecta();
-	  
-	$carro = $_POST['carro']; 
-	$modelo = $_POST['modelo']; 
-	$motor = $_POST['motor']; 
-	$fabricante = $_POST['fabricante']; 
 
-	$sql = "INSERT INTO carro (carro, modelo, motor,fabricante_id) values ("; 
-	$sql .= "'" . $carro . "',";
-	$sql .= "'" . $modelo . "',";
-	$sql .= "'" . $motor . "',";
-	$sql .= "'" . $fabricante . "')";
-	
-	$resultado = $con -> inserir($sql, $con->conexao);
-	
+	$con = new database();
+
+	$con -> conecta();
+
+  $dados["carro"] = $_POST['carro'];
+  $dados["modelo"] = $_POST['modelo'];
+  $dados["motor"] = $_POST['motor'];
+  $dados["fabricante_id"] = $_POST['fabricante'];
+
+	$resultado = $con -> inserir("carro", $dados, $con->conexao);
+
 	if ($resultado > 0 ) {
 	echo "Registro Inserido!";
 	}else{
 	echo "erro";
 	}
-	 
-	
-	
-?> 
+
+
+
+?>
